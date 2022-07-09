@@ -48,7 +48,7 @@ Dashboard
         <!-- small card -->
         <div class="small-box bg-dark">
             <div class="inner">
-                <h3>5</h3>
+                <h3>{{ $service }}</h3>
 
                 <p>Total Services</p>
             </div>
@@ -62,7 +62,7 @@ Dashboard
     <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
             <div class="inner">
-                <h3>15</h3>
+                <h3>{{ $gallery }}</h3>
 
                 <p>Total Galleries</p>
             </div>
@@ -76,7 +76,7 @@ Dashboard
     <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
             <div class="inner" style="color: white">
-                <h3>25</h3>
+                <h3>{{ $testimonial }}</h3>
 
                 <p>Total Testimonials</p>
             </div>
@@ -90,12 +90,40 @@ Dashboard
     <div class="col-lg-3 col-6">
         <div class="small-box bg-gray">
             <div class="inner">
-                <h3>20</h3>
+                <h3>{{ $blog }}</h3>
 
                 <p>Total Blog</p>
             </div>
             <div class="icon">
                 <i class="fa-solid fa-file"></i>
+            </div>
+            <div class="small-box-footer"> </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-orange">
+            <div class="inner" style="color: white">
+                <h3>{{ $slider }}</h3>
+
+                <p>Total Slider</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-sliders"></i>
+            </div>
+            <div class="small-box-footer"> </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-navy">
+            <div class="inner">
+                <h3>{{ $category }}</h3>
+
+                <p>Total Category</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-quote-left"></i>
             </div>
             <div class="small-box-footer"> </div>
         </div>

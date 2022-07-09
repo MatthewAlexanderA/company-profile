@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use Illuminate\Auth\Events\Logout;
 
+use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\GalleryController;
@@ -17,7 +19,7 @@ use App\Http\Controllers\WhyController;
 use App\Http\Controllers\ContactController;
 
 use App\Http\Controllers\ConfigController;
-
+use App\Http\Controllers\FormController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +36,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-});
+Route::resource('dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authentication'])->name('authentication');
@@ -54,3 +54,4 @@ Route::resource('why', WhyController::class)->middleware('auth');
 Route::resource('contact', ContactController::class)->middleware('auth');
 
 Route::resource('config', ConfigController::class)->middleware('auth');
+Route::resource('form', FormController::class)->middleware('auth');
