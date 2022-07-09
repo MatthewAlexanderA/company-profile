@@ -19,7 +19,7 @@ class SliderController extends Controller
         $slider = Slider::latest()->paginate(5);
 
         return view('admin.slider.index', compact('slider'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -49,7 +49,7 @@ class SliderController extends Controller
             'image' => 'image|file|required',
         ]);
 
-        $image = $request->file('image')->store('post-images');
+        $image = $request->file('image')->store('post-images/slider');
 
         $validated['image'] = $image;
 
@@ -102,7 +102,7 @@ class SliderController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validated['image'] = $request->file('image')->store('post-images');
+            $validated['image'] = $request->file('image')->store('post-images/slider');
         };
 
         $slider->update($validated);

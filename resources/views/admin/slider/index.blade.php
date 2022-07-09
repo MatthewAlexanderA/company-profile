@@ -43,9 +43,9 @@ Sliders
                 <tbody>
                 <tr>
                     <td>{{ $s->title }}</td>
-                    <td>{{ $s->content }}</td>
+                    <td><?php echo $s->content ?></td>
                     <td>
-                        <div style="width: 300px;">
+                        <div style="width: 200px;">
                             <img src="{{ asset('storage/' . $s->image) }}" alt="No Image" class="img-fluid mt-3">
                         </div>
                     </td>

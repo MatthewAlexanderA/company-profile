@@ -3,11 +3,11 @@
 @section('menu')
 active
 @endsection
-@section('gallery')
+@section('category')
 active
 @endsection
 @section('title')
-Gallery
+Category
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Gallery
           <div class="card">
             <div class="card-header">
               <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('gallery.create') }}"> Create</a>
+                <a class="btn btn-success" href="{{ route('category.create') }}"> Create</a>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -33,28 +33,20 @@ Gallery
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Image</th>
+                  <th>Type</th>
                   <th>Category</th>
                   <th>Action</th>
                 </tr>
                 </thead>
-                @foreach ($gallery as $g)
+                @foreach ($category as $c)
                 <tbody>
                 <tr>
-                    <td>{{ $g->title }}</td>
-                    <td><?php echo $g->content ?></td>
-                    <td>
-                        <div style="width: 200px;">
-                            <img src="{{ asset('storage/' . $g->image) }}" alt="No Image" class="img-fluid mt-3">
-                        </div>
-                    </td>
-                    <td>{{ $g->category }}</td>
+                    <td>{{ ucfirst($c->type) }}</td>
+                    <td>{{ $c->category }}</td>
 
-                    <td><form action="{{ route('gallery.destroy',$g->id) }}" method="POST">
+                    <td><form action="{{ route('category.destroy',$c->id) }}" method="POST">
 
-                        <a class="btn btn-primary" href="{{ route('gallery.edit',$g->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('category.edit',$c->id) }}">Edit</a>
         
                         @csrf
                         @method('DELETE')
@@ -80,6 +72,6 @@ Gallery
   <!-- /.content -->
 
 
-{!! $gallery->links() !!}
+{!! $category->links() !!}
 
 @endsection

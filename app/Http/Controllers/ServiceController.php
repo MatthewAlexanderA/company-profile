@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class ServiceController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $service = Service::latest()->paginate(5);
+
+        return view('admin.service.index', compact('service'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +29,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.service.create');
     }
 
     /**
@@ -35,7 +40,20 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file|required',
+        ]);
+
+        $image = $request->file('image')->store('post-images/service');
+
+        $validated['image'] = $image;
+
+        Service::create($validated);
+
+        return redirect()->route('service.index')
+            ->with('success', 'Add Success!');
     }
 
     /**
@@ -57,7 +75,7 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        //
+        return view('admin.service.edit', compact('service'));
     }
 
     /**
@@ -69,7 +87,25 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file',
+        ];
+
+        $validated = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validated['image'] = $request->file('image')->store('post-images/service');
+        };
+
+        $service->update($validated);
+
+        return redirect()->route('service.index')
+            ->with('success', 'Update Success!');
     }
 
     /**
@@ -80,6 +116,13 @@ class ServiceController extends Controller
      */
     public function destroy(Service $service)
     {
-        //
+        if ($service->image) {
+            Storage::delete($service->image);
+        }
+
+        $service->delete($service->id);
+
+        return redirect()->route('service.index')
+            ->with('success', 'Delete Success!');
     }
 }

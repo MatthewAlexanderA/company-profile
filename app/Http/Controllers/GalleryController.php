@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gallery;
+use App\Models\Category;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -14,7 +17,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        //
+        $gallery = Gallery::latest()->paginate(5);
+
+        return view('admin.gallery.index', compact('gallery'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +30,8 @@ class GalleryController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('admin.gallery.create', compact('category', $category));
     }
 
     /**
@@ -35,7 +42,21 @@ class GalleryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file|required',
+            'category' => 'required',
+        ]);
+
+        $image = $request->file('image')->store('post-images/gallery');
+
+        $validated['image'] = $image;
+
+        Gallery::create($validated);
+
+        return redirect()->route('gallery.index')
+            ->with('success', 'Add Success!');
     }
 
     /**
@@ -57,7 +78,8 @@ class GalleryController extends Controller
      */
     public function edit(Gallery $gallery)
     {
-        //
+        $category = Category::all();
+        return view('admin.gallery.edit', compact('gallery', 'category'));
     }
 
     /**
@@ -69,7 +91,26 @@ class GalleryController extends Controller
      */
     public function update(Request $request, Gallery $gallery)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file',
+            'category' => 'required',
+        ];
+
+        $validated = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validated['image'] = $request->file('image')->store('post-images/gallery');
+        };
+
+        $gallery->update($validated);
+
+        return redirect()->route('gallery.index')
+            ->with('success', 'Update Success!');
     }
 
     /**
@@ -80,6 +121,13 @@ class GalleryController extends Controller
      */
     public function destroy(Gallery $gallery)
     {
-        //
+        if ($gallery->image) {
+            Storage::delete($gallery->image);
+        }
+
+        $gallery->delete($gallery->id);
+
+        return redirect()->route('gallery.index')
+            ->with('success', 'Delete Success!');
     }
 }

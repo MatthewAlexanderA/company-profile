@@ -1,13 +1,13 @@
 @extends('admin.layout')
 
-@section('edit')
+@section('menu')
 active
 @endsection
-@section('why')
+@section('category')
 active
 @endsection
 @section('title')
-Why Us
+Create Category
 @endsection
 
 @section('content')
@@ -20,6 +20,7 @@ Why Us
           <div class="card">
             <div class="card-header">
               <div class="pull-right">
+                <a class="btn btn-danger" href="{{ route('category.index') }}"> Back</a>
             </div>
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -36,17 +37,18 @@ Why Us
             <div class="card-body">
 
 
-                <form action="{{ route('why.update',1) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-
-                    @method('PUT')
                 
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Title</strong>
-                                <input type="text" name="title" class="form-control" @error('title') is-invalid @enderror placeholder="Title" value="{{$why[0]->title}}">
-                                @error('title')
+                                <strong>Type</strong>
+                                <select class="form-select" name="type" id="" @error('type') is-invalid @enderror>
+                                    <option value="gallery">Gallery</option>
+                                    <option value="blog">Blog</option>
+                                </select>
+                                @error('type')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -55,13 +57,17 @@ Why Us
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Content</strong>
-                                <input id="contents" type="hidden" name="content" class="form-control" value="{{$why[0]->content}}">
-                                <trix-editor input="contents"></trix-editor>
+                                <strong>Category</strong>
+                                <input type="text" name="category" class="form-control" @error('category') is-invalid @enderror placeholder="Category" value="{{ old('category') }}">
+                                @error('category')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 
@@ -79,23 +85,5 @@ Why Us
     <!-- /.container-fluid -->
   </section>
   <!-- /.content -->
-
-<script>
-
-    function previewImage() {
-        const image = document.querySelector('#image');
-        const imgPreview = document.querySelector('.img-preview');
-
-        imgPreview.style.display = 'block';
-
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-
-</script>
 
 @endsection

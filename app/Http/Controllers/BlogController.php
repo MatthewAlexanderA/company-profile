@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -14,7 +17,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blog = Blog::latest()->paginate(5);
+
+        return view('admin.blog.index', compact('blog'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +30,8 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        $category = Category::all();
+        return view('admin.blog.create', compact('category', $category));
     }
 
     /**
@@ -35,7 +42,21 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file|required',
+            'category' => 'required',
+        ]);
+
+        $image = $request->file('image')->store('post-images/blog');
+
+        $validated['image'] = $image;
+
+        Blog::create($validated);
+
+        return redirect()->route('blog.index')
+            ->with('success', 'Add Success!');
     }
 
     /**
@@ -57,7 +78,8 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        $category = Category::all();
+        return view('admin.blog.edit', compact('blog', 'category'));
     }
 
     /**
@@ -69,7 +91,26 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $rules = [
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'image|file',
+            'category' => 'required',
+        ];
+
+        $validated = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validated['image'] = $request->file('image')->store('post-images/blog');
+        };
+
+        $blog->update($validated);
+
+        return redirect()->route('blog.index')
+            ->with('success', 'Update Success!');
     }
 
     /**
@@ -80,6 +121,13 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        if ($blog->image) {
+            Storage::delete($blog->image);
+        }
+
+        $blog->delete($blog->id);
+
+        return redirect()->route('blog.index')
+            ->with('success', 'Delete Success!');
     }
 }

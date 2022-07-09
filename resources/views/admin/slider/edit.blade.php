@@ -57,12 +57,8 @@ Edit Sliders
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>Content</strong>
-                                <input type="text" name="content" class="form-control" @error('content') is-invalid @enderror placeholder="Content" value="{{$slider->content}}">
-                                @error('content')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                                @enderror
+                                <input id="contents" type="hidden" name="content" class="form-control" value="{{$slider->content}}">
+                                <trix-editor input="contents"></trix-editor>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">

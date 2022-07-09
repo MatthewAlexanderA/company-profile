@@ -3,11 +3,11 @@
 @section('menu')
 active
 @endsection
-@section('service')
+@section('category')
 active
 @endsection
 @section('title')
-Edit Service
+Edit Category
 @endsection
 
 @section('content')
@@ -20,7 +20,7 @@ Edit Service
           <div class="card">
             <div class="card-header">
               <div class="pull-right">
-                <a class="btn btn-danger" href="{{ route('service.index') }}"> Back</a>
+                <a class="btn btn-danger" href="{{ route('category.index') }}"> Back</a>
             </div>
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -37,7 +37,7 @@ Edit Service
             <div class="card-body">
 
 
-                <form action="{{ route('service.update',$service->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('category.update',$category->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     @method('PUT')
@@ -45,8 +45,15 @@ Edit Service
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Title</strong>
-                                <input type="text" name="title" class="form-control" @error('title') is-invalid @enderror placeholder="Title" value="{{$service->title}}">
+                                <strong>Type</strong>
+                                <select name="type" id="type" class="form-select" @error('title') is-invalid @enderror>
+                                    <option value="{{ $category->type }}"> {{ ucfirst($category->type) }} </option>
+                                    @if($category->type == 'blog')
+                                        <option value="gallery">Gallery</option>
+                                    @else
+                                        <option value="blog">Blog</option>
+                                    @endif
+                                </select>
                                 @error('title')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -56,28 +63,13 @@ Edit Service
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong>Content</strong>
-                                <input id="contents" type="hidden" name="content" class="form-control" value="{{$service->content}}">
-                                <trix-editor input="contents"></trix-editor>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong>Image</strong>
-                                <input type="hidden" name="oldImage" value="{{ $service->image }}">
-                                @if ($service->image)
-                                    <img src="{{ asset('storage/' . $service->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
-                                @else
-                                    <img class="img-preview img-fluid mb-3">
-                                @endif
-                                <div class="input-group mb-3">
-                                    <input type="file" class="form-control" @error('image') is-invalid @enderror name="image" id="image" onchange="previewImage()">
-                                    @error('image')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
+                                <strong>Category</strong>
+                                <input type="text" name="category" class="form-control" @error('category') is-invalid @enderror placeholder="Category" value="{{$category->category}}">
+                                @error('category')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
                                 </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

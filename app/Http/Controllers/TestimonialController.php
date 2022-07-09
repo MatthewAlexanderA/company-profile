@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+
 class TestimonialController extends Controller
 {
     /**
@@ -14,7 +16,10 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        //
+        $testimonial = Testimonial::latest()->paginate(5);
+
+        return view('admin.testimonial.index', compact('testimonial'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
@@ -24,7 +29,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.testimonial.create');
     }
 
     /**
@@ -35,7 +40,21 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'agency' => 'required',
+            'content' => 'required',
+            'image' => 'image|file|required',
+        ]);
+
+        $image = $request->file('image')->store('post-images/testimonial');
+
+        $validated['image'] = $image;
+
+        Testimonial::create($validated);
+
+        return redirect()->route('testimonial.index')
+            ->with('success', 'Add Success!');
     }
 
     /**
@@ -57,7 +76,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('admin.testimonial.edit', compact('testimonial'));
     }
 
     /**
@@ -69,7 +88,26 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'agency' => 'required',
+            'content' => 'required',
+            'image' => 'image|file',
+        ];
+
+        $validated = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validated['image'] = $request->file('image')->store('post-images/testimonial');
+        };
+
+        $testimonial->update($validated);
+
+        return redirect()->route('testimonial.index')
+            ->with('success', 'Update Success!');
     }
 
     /**
@@ -80,6 +118,13 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        if ($testimonial->image) {
+            Storage::delete($testimonial->image);
+        }
+
+        $testimonial->delete($testimonial->id);
+
+        return redirect()->route('testimonial.index')
+            ->with('success', 'Delete Success!');
     }
 }

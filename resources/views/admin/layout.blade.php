@@ -21,6 +21,16 @@
 <!-- Font Awesome -->
 <script src="https://kit.fontawesome.com/67b6ece322.js" crossorigin="anonymous"></script>
 
+<!-- Trix Editor -->
+<link rel="stylesheet" type="text/css" href="/css/trix.css">
+<script type="text/javascript" src="/js/trix.js"></script>
+
+<style>
+    trix-toolbar [data-trix-button-group="file-tools"]{
+        display: none;
+    }
+</style>
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -85,19 +95,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link @yield('about')">
+                <a href="{{ route('about.edit',1) }}" class="nav-link @yield('about')">
                     <i class="fa-solid fa-address-card"></i>
                   <p>About Us</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link @yield('why')">
+                <a href="{{ route('why.edit',1) }}" class="nav-link @yield('why')">
                     <i class="fa-solid fa-circle-question"></i>
                   <p>Why Us</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link @yield('contact')">
+                <a href="{{ route('contact.edit',1) }}" class="nav-link @yield('contact')">
                     <i class="fa-solid fa-envelope"></i>
                   <p>Contact Us</p>
                 </a>
@@ -120,27 +130,33 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('service')">
+                    <a href="/service" class="nav-link @yield('service')">
                         <i class="fa-solid fa-bell-concierge"></i>
                       <p>Services</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link @yield('gallery')">
+                    <a href="/gallery" class="nav-link @yield('gallery')">
                         <i class="fa-solid fa-image"></i>
                       <p>Galleries</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link @yield('testimonial')">
+                    <a href="/testimonial" class="nav-link @yield('testimonial')">
                         <i class="fa-solid fa-comment"></i>
                       <p>Testimonials</p>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link @yield('blog')">
+                    <a href="/blog" class="nav-link @yield('blog')">
                         <i class="fa-solid fa-file"></i>
                       <p>Blogs</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/category" class="nav-link @yield('category')">
+                      <i class="fa-solid fa-quote-left"></i>
+                      <p>Categories</p>
                     </a>
                   </li>
             </ul>
@@ -236,6 +252,12 @@
         "responsive": true,
       });
     });
+  </script>
+
+  <script>
+    document.addEventListener('trix-file-accept', function(e){
+        e.preventDefault();
+    })
   </script>
 
 </body>

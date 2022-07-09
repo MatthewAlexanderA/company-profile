@@ -6,6 +6,15 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Auth\Events\Logout;
 
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\WhyController;
+use App\Http\Controllers\ContactController;
 
 
 /*
@@ -32,3 +41,12 @@ Route::post('/login', [LoginController::class, 'authentication'])->name('authent
 Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::resource('slider', SliderController::class)->middleware('auth');
+Route::resource('service', ServiceController::class)->middleware('auth');
+Route::resource('gallery', GalleryController::class)->middleware('auth');
+Route::resource('testimonial', TestimonialController::class)->middleware('auth');
+Route::resource('blog', BlogController::class)->middleware('auth');
+Route::resource('category', CategoryController::class)->middleware('auth');
+
+Route::resource('about', AboutController::class)->middleware('auth');
+Route::resource('why', WhyController::class)->middleware('auth');
+Route::resource('contact', ContactController::class)->middleware('auth');
