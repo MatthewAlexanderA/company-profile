@@ -95,19 +95,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ route('about.edit',1) }}" class="nav-link @yield('about')">
+                <a href="about" class="nav-link @yield('about')">
                     <i class="fa-solid fa-address-card"></i>
                   <p>About Us</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('why.edit',1) }}" class="nav-link @yield('why')">
+                <a href="why" class="nav-link @yield('why')">
                     <i class="fa-solid fa-circle-question"></i>
                   <p>Why Us</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('contact.edit',1) }}" class="nav-link @yield('contact')">
+                <a href="contact" class="nav-link @yield('contact')">
                     <i class="fa-solid fa-envelope"></i>
                   <p>Contact Us</p>
                 </a>
@@ -162,7 +162,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link @yield('config')">
+            <a href="config" class="nav-link @yield('config')">
               <i class="nav-icon fas fa-gear"></i>
               <p>
                 Configuration
@@ -170,7 +170,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link @yield('form')">
+            <a href="form" class="nav-link @yield('form')">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Form

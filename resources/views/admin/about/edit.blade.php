@@ -20,6 +20,7 @@ About Us
           <div class="card">
             <div class="card-header">
               <div class="pull-right">
+                <a class="btn btn-danger" href="{{ route('about.index') }}"> Back</a>
             </div>
             @if ($errors->any())
             <div class="alert alert-danger">

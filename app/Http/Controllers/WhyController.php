@@ -14,8 +14,10 @@ class WhyController extends Controller
      */
     public function index()
     {
-        $why = Why::all();
-        return view('admin.why.edit', compact('why'));
+        $why = Why::latest()->paginate(5);
+
+        return view('admin.why.index', compact('why'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

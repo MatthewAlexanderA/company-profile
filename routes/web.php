@@ -16,6 +16,8 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\WhyController;
 use App\Http\Controllers\ContactController;
 
+use App\Http\Controllers\ConfigController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -50,3 +52,5 @@ Route::resource('category', CategoryController::class)->middleware('auth');
 Route::resource('about', AboutController::class)->middleware('auth');
 Route::resource('why', WhyController::class)->middleware('auth');
 Route::resource('contact', ContactController::class)->middleware('auth');
+
+Route::resource('config', ConfigController::class)->middleware('auth');

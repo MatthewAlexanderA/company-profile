@@ -14,8 +14,10 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contact = Contact::all();
-        return view('admin.contact.edit', compact('contact'));
+        $contact = Contact::latest()->paginate(5);
+
+        return view('admin.contact.index', compact('contact'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**

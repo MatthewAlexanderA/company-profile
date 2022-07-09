@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\About;
+use App\Models\Config;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
 
-class AboutController extends Controller
+class ConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,37 +16,38 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = About::latest()->paginate(5);
+        $config = Config::latest()->paginate(5);
 
-        return view('admin.about.index', compact('about'))
+        return view('admin.config.index', compact('config'))
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\About  $about
+     * @param  \App\Models\Config  $config
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit(Config $config)
     {
-        $about = About::all();
-        return view('admin.about.edit', compact('about'));
+        $config = Config::all();
+        return view('admin.config.edit', compact('config'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\About  $about
+     * @param  \App\Models\Config  $config
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, About $about)
+    public function update(Request $request, Config $config)
     {
         $rules = [
             'title' => 'required',
-            'content' => 'required',
             'image' => 'image|file',
+            'metadata' => 'required',
+            'wa' => 'required',
         ];
 
         $validated = $request->validate($rules);
@@ -55,12 +56,12 @@ class AboutController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validated['image'] = $request->file('image')->store('post-images/about');
+            $validated['image'] = $request->file('image')->store('post-images/config');
         };
 
-        $about->update($validated);
+        $config->update($validated);
 
-        return redirect()->route('about.index')
+        return redirect()->route('config.index')
             ->with('success', 'Update Success!');
     }
 }
