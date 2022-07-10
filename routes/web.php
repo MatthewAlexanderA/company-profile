@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AboutsController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\GalleriesController;
+use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\ContactsController;
 
 use App\Http\Controllers\LoginController;
 use Illuminate\Auth\Events\Logout;
@@ -35,6 +41,12 @@ use App\Http\Controllers\FormController;
 */
 
 Route::resource('/', HomeController::class);
+Route::resource('abouts', AboutsController::class);
+Route::resource('services', ServicesController::class);
+Route::resource('galleries', GalleriesController::class);
+Route::resource('testimonials', TestimonialsController::class);
+Route::resource('blogs', BlogsController::class);
+Route::resource('contacts', ContactsController::class);
 
 Route::resource('dashboard', DashboardController::class)->middleware('auth');
 

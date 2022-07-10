@@ -33,17 +33,17 @@ Forms
                   <th>Subject</th>
                   <th>Content</th>
                 </tr>
-                </thead>
-                @foreach ($form as $f)
+                </thead>           
                 <tbody>
+                  @foreach ($form as $f)
                 <tr>
                     <td>{{ $f->name }}</td>
                     <td>{{ $f->subject }}</td>
                     <td><?php echo $f->content ?></td>
                 </tr>
+                @endforeach
                 </tbody>
               </table>
-              @endforeach
 
             </div>
             <!-- /.card-body -->

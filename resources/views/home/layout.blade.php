@@ -45,25 +45,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link @yield('home')" href="#">Home</a>
+                    <a class="nav-link @yield('home')" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('about')" href="#">About Us</a>
+                    <a class="nav-link @yield('about')" href="/abouts">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('service')" href="#">Service</a>
+                    <a class="nav-link @yield('service')" href="/services">Service</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('gallery')" href="#">Gallery</a>
+                    <a class="nav-link @yield('gallery')" href="/galleries">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('testimonial')" href="#">Testimonial</a>
+                    <a class="nav-link @yield('testimonial')" href="/testimonials">Testimonial</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('blog')" href="#">Blog</a>
+                    <a class="nav-link @yield('blog')" href="/blogs">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('contact')" href="#">Contact Us</a>
+                    <a class="nav-link @yield('contact')" href="/contacts">Contact Us</a>
                 </li>
             </ul>
         </div>
@@ -101,6 +101,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 </div>
 <!-- ./wrapper -->
+
+<div class="btn-floating fixed-bottom ms-3">
+    <a href="https://wa.me/089517392715" target="_blank">
+        <button class="btn-floating" style="border-radius:100px; background-color:rgb(80, 231, 80); width:50px; height:50px;">
+            <i class="fa-brands fa-whatsapp"></i>
+        </button>
+    </a>
+</div>
 
 <!-- REQUIRED SCRIPTS -->
 
@@ -151,7 +159,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
     document.addEventListener('trix-file-accept', function(e){
         e.preventDefault();
     })
-  </script>
+</script>
+
+<!-- Ekko Lightbox -->
+<script src="assets/admin/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<!-- Filterizr-->
+<script src="assets/admin/plugins/filterizr/jquery.filterizr.min.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  })
+</script>
 
 </body>
 </html>

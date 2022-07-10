@@ -166,12 +166,4 @@ active
   </div>
 </div>
 
-<div class="btn-floating fixed-bottom ms-3">
-    <a href="https://wa.me/089517392715" target="_blank">
-        <button class="btn-floating" style="border-radius:100px; background-color:rgb(80, 231, 80); width:50px; height:50px;">
-            <i class="fa-brands fa-whatsapp"></i>
-        </button>
-    </a>
-</div>
-
 @endsection
