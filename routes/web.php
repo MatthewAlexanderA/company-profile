@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\LoginController;
 use Illuminate\Auth\Events\Logout;
 
@@ -32,9 +34,7 @@ use App\Http\Controllers\FormController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('/', HomeController::class);
 
 Route::resource('dashboard', DashboardController::class)->middleware('auth');
 

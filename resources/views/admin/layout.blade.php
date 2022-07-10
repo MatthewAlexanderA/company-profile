@@ -31,6 +31,8 @@
     }
 </style>
 
+{{-- <link rel="shortcut icon" href="{{{ asset('storage/post-images/favicon.ico') }}}"> --}}
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->

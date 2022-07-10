@@ -45,7 +45,7 @@ class ConfigController extends Controller
     {
         $rules = [
             'title' => 'required',
-            'image' => 'image|file',
+            'image' => 'required|file',
             'metadata' => 'required',
             'wa' => 'required',
         ];
