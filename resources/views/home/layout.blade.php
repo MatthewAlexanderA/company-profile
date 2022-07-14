@@ -7,7 +7,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Company Profile</title>
+  <title>{{ $config[0]->title }}</title>
+
+  <link rel="shortcut icon" href={{{ asset('storage/' . $config[0]->image) }}}>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -23,7 +25,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Trix Editor -->
 <link rel="stylesheet" type="text/css" href="/css/trix.css">
+<link rel="stylesheet" type="text/css" href="/css/nicepage.css">
+<link rel="stylesheet" type="text/css" href="/css/Home.css">
 <script type="text/javascript" src="/js/trix.js"></script>
+<script type="text/javascript" src="/js/nicepage.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
@@ -105,7 +111,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="btn-floating fixed-bottom ms-3">
     <a href="https://wa.me/089517392715" target="_blank">
         <button class="btn-floating" style="border-radius:100px; background-color:rgb(80, 231, 80); width:50px; height:50px;">
-            <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-whatsapp" style="color: black;"></i>
         </button>
     </a>
 </div>

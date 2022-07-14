@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Form;
 use App\Models\Contact;
+use App\Models\Config;
 
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class ContactsController extends Controller
     public function index()
     {
         $contact = Contact::all();
+        $config = Config::all();
 
-        return view('home.contact', compact('contact'));
+        return view('home.contact', compact('contact', 'config'));
     }
 
     /**

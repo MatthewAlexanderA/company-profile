@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Gallery;
 use App\Models\Testimonial;
 use App\Models\Blog;
+use App\Models\Config;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +25,8 @@ class HomeController extends Controller
         $gallery = Gallery::all();
         $testimonial = Testimonial::all();
         $blog = Blog::all();
+        $config = Config::all();
 
-        return view('home.index', compact('slider', 'about', 'why', 'service', 'gallery', 'testimonial', 'blog'));
+        return view('home.index', compact('slider', 'about', 'why', 'service', 'gallery', 'testimonial', 'blog', 'config'));
     }
 }

@@ -30,30 +30,40 @@ active
 </div>
 
 <div class="content mt-3">
+    <div class="content mt-3">
+        <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-6" id="sec-568b">
+            <div class="u-expanded u-grey-light-2 u-map">
+              <div class="embed-responsive">
+                <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=Duta%20Pakuan%20Jl.Danau%20Kerinci%20Blok%20E1%20no.15&amp;z=18&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyRHV0YSUyMFBha3VhbiUyMEpsLkRhbmF1JTIwS2VyaW5jaSUyMEJsb2slMjBFMSUyMG5vLjE1JTIyJTJDJTIyem9vbSUyMiUzQTE4JTJDJTIydHlwZUlkJTIyJTNBJTIycm9hZCUyMiUyQyUyMmxhbmclMjIlM0FudWxsJTJDJTIyYXBpS2V5JTIyJTNBbnVsbCUyQyUyMm1hcmtlcnMlMjIlM0ElNUIlNUQlN0Q="></iframe>
+              </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+{{-- <div class="content mt-3">
     <div id="map" style="height: 400px;"></div>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
     function initMap() {
       const myLatLng = { lat: 22.2734719, lng: 70.7512559 };
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 5,
         center: myLatLng,
       });
-
       new google.maps.Marker({
         position: myLatLng,
         map,
         title: "Hello!",
       });
     }
-
     window.initMap = initMap;
 </script>
 
 <script type="text/javascript"
     src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
 
-</div>
+</div> --}} --}}
 
 <div class="content mt-3">
     <div class="col-md-12">
