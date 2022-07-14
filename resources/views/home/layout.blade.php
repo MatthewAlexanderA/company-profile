@@ -38,10 +38,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand-md navbar-dark navbar-black">
+  <nav class="main-header navbar navbar-expand-md navbar-dark navbar-black" style="position: sticky; top: 0;">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="storage/post-images/config/xYAfm0axWysVMWVkUj7Qa5FuxFdmSXpFVk1Apr3R.ico" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="{{ asset('storage/' . $config[0]->image) }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
             <strong>Company</strong>Profile
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
