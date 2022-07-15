@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </head>
-<body class="hold-transition layout-top-nav">
+<body class="hold-transition layout-top-nav" id="home">
 <div class="wrapper">
 
   <!-- Navbar -->
@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="container">
         <a class="navbar-brand" href="#">
             <img src="{{ asset('storage/' . $config[0]->image) }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            <strong>Company</strong>Profile
+            <strong>{{ $config[0]->title }}</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,18 +98,62 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Main Footer -->
   <footer class="main-footer bg-dark">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <img src="{{ asset('storage/' . $config[0]->footer_img) }}" alt="No Image" width="250" height="100" style="margin-top: 50px; margin-left: 20px;"> <br> <br>
+        {{ $config[0]->footer_content }}
+      </div>
+      <div class="col-md-3">
+        <h3>Fast Access</h3>
+        <ul>
+          <li>
+            <a class="nav-link" href="/" style="color: white">Home</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/abouts" style="color: white">About Us</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/services" style="color: white">Service</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/galleries" style="color: white">Gallery</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/testimonials" style="color: white">Testimonial</a>
+          </li>
+          <li>
+            <a class="nav-link" href="/blog" style="color: white">Blog</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>Address</h3>
+        <p>{{ $contact[0]->alamat }}</p>
+        <p><i class="fa-solid fa-phone"></i> {{ $contact[0]->telp }}</p>
+        <p><i class="fa-solid fa-envelope"></i> {{ $contact[0]->email }}</p>
+      </div>
+    </div>
+  </footer>
+  <footer class="main-footer bg-black">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-        <b>Company</b>Profile
+        <b>{{ $config[0]->title }}</b>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; {{ date('Y') }} CompanyProfile.</strong> All rights reserved.
+    <strong>Copyright &copy; {{ date('Y') }} {{ $config[0]->title }}.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->
 
-<div class="btn-floating fixed-bottom ms-3">
-    <a href="https://wa.me/089517392715" target="_blank">
+<div class="btn-floating fixed-bottom ms-3" style="bottom: 110px; left: 1258px;">
+    <a href="#home">
+        <button class="btn-floating" style="border-radius:100px; background-color:rgb(12, 15, 53); width:50px; height:50px;">
+          <i class="fa-solid fa-angle-up"></i>
+        </button>
+    </a>
+</div>
+<div class="btn-floating fixed-bottom ms-3" style="bottom: 50px; left: 1258px;">
+    <a href="https://wa.me/{{ $config[0]->wa }}" target="_blank">
         <button class="btn-floating" style="border-radius:100px; background-color:rgb(80, 231, 80); width:50px; height:50px;">
             <i class="fa-brands fa-whatsapp" style="color: black;"></i>
         </button>

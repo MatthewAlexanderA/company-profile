@@ -11,6 +11,7 @@ use App\Models\Gallery;
 use App\Models\Testimonial;
 use App\Models\Blog;
 use App\Models\Config;
+use App\Models\Contact;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -21,12 +22,13 @@ class HomeController extends Controller
         $slider = Slider::all();
         $about = About::all();
         $why = Why::all();
-        $service = Service::all();
-        $gallery = Gallery::all();
-        $testimonial = Testimonial::all();
-        $blog = Blog::all();
+        $service = Service::limit(6)->get();
+        $gallery = Gallery::limit(4)->get();
+        $testimonial = Testimonial::limit(2)->get();
+        $blog = Blog::limit(3)->get();
         $config = Config::all();
+        $contact = Contact::all();
 
-        return view('home.index', compact('slider', 'about', 'why', 'service', 'gallery', 'testimonial', 'blog', 'config'));
+        return view('home.index', compact('slider', 'about', 'why', 'service', 'gallery', 'testimonial', 'blog', 'config', 'contact'));
     }
 }

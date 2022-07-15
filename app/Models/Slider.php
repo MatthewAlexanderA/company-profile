@@ -9,5 +9,5 @@ class Slider extends Model
 {
     use HasFactory;
     protected $table = 'sliders';
-    protected $fillable = ['id', 'title', 'content', 'image'];
+    protected $fillable = ['id', 'image'];
 }

@@ -88,6 +88,36 @@ Config
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Footer Image</strong>
+                                <input type="hidden" name="oldFooterImage" value="{{ $config[0]->footer_img }}">
+                                @if ($config[0]->footer_img)
+                                    <img src="{{ asset('storage/' . $config[0]->footer_img) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                                @else
+                                    <img class="img-preview img-fluid mb-3">
+                                @endif
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" @error('footer_img') is-invalid @enderror name="footer_img" id="footer_img" onchange="previewImage()">
+                                    @error('footer_img')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>Footer Content</strong>
+                                <input type="text" name="footer_content" class="form-control" @error('footer_content') is-invalid @enderror placeholder="Footer Content" value="{{$config[0]->footer_content}}">
+                                @error('footer_content')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                        </div>
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                             <button type="submit" class="btn btn-primary">Update</button>
                         </div>

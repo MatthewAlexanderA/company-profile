@@ -44,8 +44,6 @@ class SliderController extends Controller
         // return $request->file('image')->store('post-images');
 
         $validated = $request->validate([
-            'title' => 'required',
-            'content' => 'required',
             'image' => 'image|file|required',
         ]);
 
@@ -91,8 +89,6 @@ class SliderController extends Controller
     public function update(Request $request, Slider $slider)
     {
         $rules = [
-            'title' => 'required',
-            'content' => 'required',
             'image' => 'image|file',
         ];
 

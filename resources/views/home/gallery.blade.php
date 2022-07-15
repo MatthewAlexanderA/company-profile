@@ -12,8 +12,9 @@ active
             <div>
                 <div class="btn-group w-100 mb-2 bg-light">
                     <a class="btn btn-light active" href="javascript:void(0)" data-filter="all"> All items </a>
-                    <a class="btn btn-light" href="javascript:void(0)" data-filter="Gx"> Gx </a>
-                    <a class="btn btn-light" href="javascript:void(0)" data-filter="V / V Max"> V / V Max </a>
+                    @foreach ($category as $c)
+                    <a class="btn btn-light" href="javascript:void(0)" data-filter="{{ $c->category }}"> {{ $c->category }} </a>
+                    @endforeach
                 </div>
                 <div class="mb-2">
                     <a class="btn btn-secondary" href="javascript:void(0)" data-shuffle=""> Shuffle items </a>

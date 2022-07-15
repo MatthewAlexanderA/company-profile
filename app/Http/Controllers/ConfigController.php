@@ -48,6 +48,8 @@ class ConfigController extends Controller
             'image' => 'file',
             'metadata' => 'required',
             'wa' => 'required',
+            'footer_img' => 'file',
+            'footer_content' => 'required',
         ];
 
         $validated = $request->validate($rules);
@@ -57,6 +59,13 @@ class ConfigController extends Controller
                 Storage::delete($request->oldImage);
             }
             $validated['image'] = $request->file('image')->store('post-images/config');
+        };
+
+        if ($request->file('footer_img')) {
+            if ($request->oldFooterImage) {
+                Storage::delete($request->oldFooterImage);
+            }
+            $validated['footer_img'] = $request->file('footer_img')->store('post-images/config');
         };
 
         $config->update($validated);

@@ -33,8 +33,6 @@ Sliders
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>Title</th>
-                  <th>Content</th>
                   <th>Image</th>
                   <th>Action</th>
                 </tr>
@@ -42,8 +40,6 @@ Sliders
                 @foreach ($slider as $s)
                 <tbody>
                 <tr>
-                    <td>{{ $s->title }}</td>
-                    <td><?php echo $s->content ?></td>
                     <td>
                         <div style="width: 200px;">
                             <img src="{{ asset('storage/' . $s->image) }}" alt="No Image" class="img-fluid mt-3">

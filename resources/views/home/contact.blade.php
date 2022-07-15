@@ -44,7 +44,7 @@ active
 {{-- <div class="content mt-3">
     <div id="map" style="height: 400px;"></div>
 
-{{-- <script type="text/javascript">
+ <script type="text/javascript">
     function initMap() {
       const myLatLng = { lat: 22.2734719, lng: 70.7512559 };
       const map = new google.maps.Map(document.getElementById("map"), {
@@ -63,7 +63,7 @@ active
 <script type="text/javascript"
     src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
 
-</div> --}} --}}
+</div> --}} 
 
 <div class="content mt-3">
     <div class="col-md-12">

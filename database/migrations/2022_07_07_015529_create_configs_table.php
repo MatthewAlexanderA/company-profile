@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('image');
             $table->string('metadata');
             $table->string('wa');
+            $table->string('footer_img');
+            $table->string('footer_content');
             $table->timestamps();
         });
     }

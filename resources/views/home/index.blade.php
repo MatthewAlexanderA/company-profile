@@ -6,33 +6,23 @@ active
 
 @section('content')
 
-<div class="card-body">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
-            @foreach ($slider as $s)
-                <div class="carousel-item">
-                    <img class="d-block w-100" style="height: 200px" src="{{ asset('storage/' . $s->image) }}" alt="No Image">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>{{ $s->title }}</h5>
-                        <p><?php echo $s->content ?></p>
-                    </div>
-                </div>
-            @endforeach
+          @foreach ($slider as $s)
+          <div class="carousel-item active">
+            <img src="{{ asset('storage/' . $s->image) }}" class="d-block w-100" style="max-height: 300px;" alt="No Image">
+          </div>
+          @endforeach
         </div>
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-custom-icon" aria-hidden="true">
-                <i class="fas fa-chevron-left"></i>
-            </span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-custom-icon" aria-hidden="true">
-                <i class="fas fa-chevron-right"></i>
-            </span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-</div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
 
 <div class="content mt-3">
     <br>
@@ -126,7 +116,7 @@ active
     <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-6" id="sec-568b">
         <div class="u-expanded u-grey-light-2 u-map">
           <div class="embed-responsive">
-            <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=Duta%20Pakuan%20Jl.Danau%20Kerinci%20Blok%20E1%20no.15&amp;z=18&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyRHV0YSUyMFBha3VhbiUyMEpsLkRhbmF1JTIwS2VyaW5jaSUyMEJsb2slMjBFMSUyMG5vLjE1JTIyJTJDJTIyem9vbSUyMiUzQTE4JTJDJTIydHlwZUlkJTIyJTNBJTIycm9hZCUyMiUyQyUyMmxhbmclMjIlM0FudWxsJTJDJTIyYXBpS2V5JTIyJTNBbnVsbCUyQyUyMm1hcmtlcnMlMjIlM0ElNUIlNUQlN0Q="></iframe>
+            <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=graha%20nurul%20menteng&amp;z=18&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyZ3JhaGElMjBudXJ1bCUyMG1lbnRlbmclMjIlMkMlMjJ6b29tJTIyJTNBMTglMkMlMjJ0eXBlSWQlMjIlM0ElMjJyb2FkJTIyJTJDJTIybGFuZyUyMiUzQW51bGwlMkMlMjJhcGlLZXklMjIlM0FudWxsJTJDJTIybWFya2VycyUyMiUzQSU1QiU1RCUyQyUyMmVtYmVkJTIyJTNBJTIyJTIyJTdE"></iframe>
           </div>
         </div>
     </section>

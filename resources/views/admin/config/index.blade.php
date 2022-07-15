@@ -33,6 +33,8 @@ Config
                   <th>Image</th>
                   <th>Metadata</th>
                   <th>WhatsApp</th>
+                  <th>Footer Image</th>
+                  <th>Footer Content</th>
                 </tr>
                 </thead>
                 @foreach ($config as $c)
@@ -46,6 +48,12 @@ Config
                     </td>
                     <td><?php echo $c->metadata ?></td>
                     <td>{{ $c->wa }}</td>
+                    <td>
+                      <div style="width: 100px;">
+                          <img src="{{ asset('storage/' . $c->footer_img) }}" alt="No Image" class="img-fluid mt-3">
+                      </div>
+                  </td>
+                    <td>{{ $c->footer_content }}</td>
                 </tr>
                 </tbody>
               </table>
