@@ -30,15 +30,13 @@ active
 </div>
 
 <div class="content mt-3">
-    <div class="content mt-3">
-        <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-6" id="sec-568b">
-            <div class="u-expanded u-grey-light-2 u-map">
-              <div class="embed-responsive">
-                <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=Duta%20Pakuan%20Jl.Danau%20Kerinci%20Blok%20E1%20no.15&amp;z=18&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyRHV0YSUyMFBha3VhbiUyMEpsLkRhbmF1JTIwS2VyaW5jaSUyMEJsb2slMjBFMSUyMG5vLjE1JTIyJTJDJTIyem9vbSUyMiUzQTE4JTJDJTIydHlwZUlkJTIyJTNBJTIycm9hZCUyMiUyQyUyMmxhbmclMjIlM0FudWxsJTJDJTIyYXBpS2V5JTIyJTNBbnVsbCUyQyUyMm1hcmtlcnMlMjIlM0ElNUIlNUQlN0Q="></iframe>
-              </div>
-            </div>
-        </section>
-    </div>
+    <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-6" id="sec-568b">
+        <div class="u-expanded u-grey-light-2 u-map">
+          <div class="embed-responsive">
+            <iframe class="embed-responsive-item" src="//maps.google.com/maps?output=embed&amp;q=graha%20nurul%20menteng&amp;z=18&amp;t=m" data-map="JTdCJTIycG9zaXRpb25UeXBlJTIyJTNBJTIybWFwLWFkZHJlc3MlMjIlMkMlMjJhZGRyZXNzJTIyJTNBJTIyZ3JhaGElMjBudXJ1bCUyMG1lbnRlbmclMjIlMkMlMjJ6b29tJTIyJTNBMTglMkMlMjJ0eXBlSWQlMjIlM0ElMjJyb2FkJTIyJTJDJTIybGFuZyUyMiUzQW51bGwlMkMlMjJhcGlLZXklMjIlM0FudWxsJTJDJTIybWFya2VycyUyMiUzQSU1QiU1RCUyQyUyMmVtYmVkJTIyJTNBJTIyJTIyJTdE"></iframe>
+          </div>
+        </div>
+    </section>
 </div>
 
 {{-- <div class="content mt-3">
