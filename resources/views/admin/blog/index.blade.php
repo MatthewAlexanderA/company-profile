@@ -30,19 +30,20 @@ Blog
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
+
+              <table id="example" class="display" style="width:100%">
                 <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Image</th>
-                  <th>Category</th>
-                  <th>Action</th>
-                </tr>
+                    <tr>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th>Image</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
                 </thead>
-                @foreach ($blog as $b)
                 <tbody>
-                <tr>
+                  @foreach ($blog as $b)
+                  <tr>
                     <td>{{ $b->title }}</td>
                     <td><?php echo $b->content ?></td>
                     <td>
@@ -63,8 +64,17 @@ Blog
                     </form></td>
 
                 </tr>
+                  @endforeach
                 </tbody>
-                @endforeach
+                <tfoot>
+                    <tr>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th>Image</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

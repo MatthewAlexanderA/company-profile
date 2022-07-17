@@ -30,19 +30,20 @@ Gallery
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
+
+              <table id="example" class="display" style="width:100%">
                 <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Content</th>
-                  <th>Image</th>
-                  <th>Category</th>
-                  <th>Action</th>
-                </tr>
+                    <tr>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th>Image</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
                 </thead>
-                @foreach ($gallery as $g)
                 <tbody>
-                <tr>
+                  @foreach ($gallery as $g)
+                  <tr>
                     <td>{{ $g->title }}</td>
                     <td><?php echo $g->content ?></td>
                     <td>
@@ -52,7 +53,8 @@ Gallery
                     </td>
                     <td>{{ $g->category }}</td>
 
-                    <td><form action="{{ route('gallery.destroy',$g->id) }}" method="POST">
+                    <td>
+                      <form action="{{ route('gallery.destroy',$g->id) }}" method="POST">
 
                         <a class="btn btn-primary" href="{{ route('gallery.edit',$g->id) }}">Edit</a>
         
@@ -60,11 +62,21 @@ Gallery
                         @method('DELETE')
         
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Delete?')">Delete</button>
-                    </form></td>
+                      </form>
+                    </td>
 
                 </tr>
+                  @endforeach
                 </tbody>
-                @endforeach
+                <tfoot>
+                    <tr>
+                      <th>Title</th>
+                      <th>Content</th>
+                      <th>Image</th>
+                      <th>Category</th>
+                      <th>Action</th>
+                    </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

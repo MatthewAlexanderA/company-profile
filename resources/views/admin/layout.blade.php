@@ -14,6 +14,9 @@
   <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
 
+  {{-- Data Table --}}
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -236,6 +239,14 @@
 <script src="assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
 
 <!-- Page specific script -->
 <script>

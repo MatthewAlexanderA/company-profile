@@ -30,17 +30,18 @@ Category
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
+
+              <table id="example" class="display" style="width:100%">
                 <thead>
-                <tr>
-                  <th>Type</th>
-                  <th>Category</th>
-                  <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
-                @foreach ($category as $c)
                 <tbody>
-                <tr>
+                  @foreach ($category as $c)
+                  <tr>
                     <td>{{ ucfirst($c->type) }}</td>
                     <td>{{ $c->category }}</td>
 
@@ -55,8 +56,15 @@ Category
                     </form></td>
 
                 </tr>
+                  @endforeach
                 </tbody>
-                @endforeach
+                <tfoot>
+                    <tr>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->

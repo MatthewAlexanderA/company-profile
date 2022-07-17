@@ -30,18 +30,19 @@ Testimonial
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example2" class="table table-bordered table-hover">
+
+              <table id="example" class="display" style="width:100%">
                 <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Agency</th>
-                  <th>Comment</th>
-                  <th>Image</th>
-                  <th>Action</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Agency</th>
+                        <th>Comment</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
                 </thead>
-                @foreach ($testimonial as $t)
                 <tbody>
+                @foreach ($testimonial as $t)
                 <tr>
                     <td>{{ $t->name }}</td>
                     <td>{{ $t->agency }}</td>
@@ -52,19 +53,29 @@ Testimonial
                         </div>
                     </td>
 
-                    <td><form action="{{ route('testimonial.destroy',$t->id) }}" method="POST">
+                    <td>
+                        <form action="{{ route('testimonial.destroy',$t->id) }}" method="POST">
 
-                        <a class="btn btn-primary" href="{{ route('testimonial.edit',$t->id) }}">Edit</a>
+                            <a class="btn btn-primary" href="{{ route('testimonial.edit',$t->id) }}">Edit</a>
         
-                        @csrf
-                        @method('DELETE')
+                            @csrf
+                            @method('DELETE')
         
-                        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete?')">Delete</button>
-                    </form></td>
-
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete?')">Delete</button>
+                        </form>
+                    </td>
                 </tr>
-                </tbody>
                 @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Agency</th>
+                        <th>Comment</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
               </table>
             </div>
             <!-- /.card-body -->
