@@ -21,7 +21,8 @@ Service
             <div class="card-header">
               <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('service.create') }}"> Create</a>
-            </div>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedService" onclick="location.reload()">Delete Selected</a>
+              </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -34,6 +35,7 @@ Service
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>
@@ -43,7 +45,8 @@ Service
                 <tbody>
                   @foreach ($service as $s)
                   <tr>
-                      <td>{{ $s->title }}</td>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $s->id }}" /></td>
+                    <td>{{ $s->title }}</td>
                       <td><?php echo $s->content ?></td>
                       <td>
                           <div style="width: 200px;">
@@ -67,6 +70,7 @@ Service
                 </tbody>
                 <tfoot>
                     <tr>
+                      <th></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>

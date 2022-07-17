@@ -19,8 +19,9 @@ Gallery
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <div class="pull-right">
+              <div class="pull-right" style="display: inline-block">
                 <a class="btn btn-success" href="{{ route('gallery.create') }}"> Create</a>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedGallery" onclick="location.reload()">Delete Selected</a>
             </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
@@ -34,6 +35,7 @@ Gallery
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>
@@ -44,6 +46,7 @@ Gallery
                 <tbody>
                   @foreach ($gallery as $g)
                   <tr>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $g->id }}" /></td>
                     <td>{{ $g->title }}</td>
                     <td><?php echo $g->content ?></td>
                     <td>
@@ -70,6 +73,7 @@ Gallery
                 </tbody>
                 <tfoot>
                     <tr>
+                      <th></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>

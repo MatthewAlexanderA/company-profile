@@ -14,10 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::latest()->paginate(5);
+        $category = Category::latest()->paginate(500);
 
         return view('admin.category.index', compact('category'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -103,5 +103,12 @@ class CategoryController extends Controller
 
         return redirect()->route('category.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedCategory(Request $request)
+    {
+        $ids = $request->ids;
+        Category::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

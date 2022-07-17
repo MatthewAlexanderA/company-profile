@@ -17,10 +17,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog = Blog::latest()->paginate(5);
+        $blog = Blog::latest()->paginate(500);
 
         return view('admin.blog.index', compact('blog'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -129,5 +129,12 @@ class BlogController extends Controller
 
         return redirect()->route('blog.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedBlog(Request $request)
+    {
+        $ids = $request->ids;
+        Blog::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

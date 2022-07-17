@@ -21,7 +21,8 @@ Testimonial
             <div class="card-header">
               <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('testimonial.create') }}"> Create</a>
-            </div>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedTestimonial" onclick="location.reload()">Delete Selected</a>
+              </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -34,7 +35,8 @@ Testimonial
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
+                      <th>Name</th>
                         <th>Agency</th>
                         <th>Comment</th>
                         <th>Image</th>
@@ -44,6 +46,7 @@ Testimonial
                 <tbody>
                 @foreach ($testimonial as $t)
                 <tr>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $t->id }}" /></td>
                     <td>{{ $t->name }}</td>
                     <td>{{ $t->agency }}</td>
                     <td><?php echo $t->content ?></td>
@@ -69,6 +72,7 @@ Testimonial
                 </tbody>
                 <tfoot>
                     <tr>
+                      <th></th>
                         <th>Name</th>
                         <th>Agency</th>
                         <th>Comment</th>

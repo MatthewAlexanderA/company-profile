@@ -21,7 +21,8 @@ Category
             <div class="card-header">
               <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('category.create') }}"> Create</a>
-            </div>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedCategory" onclick="location.reload()">Delete Selected</a>
+              </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -34,7 +35,8 @@ Category
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        <th>Type</th>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
+                      <th>Type</th>
                         <th>Category</th>
                         <th>Action</th>
                     </tr>
@@ -42,6 +44,7 @@ Category
                 <tbody>
                   @foreach ($category as $c)
                   <tr>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $c->id }}" /></td>
                     <td>{{ ucfirst($c->type) }}</td>
                     <td>{{ $c->category }}</td>
 
@@ -60,6 +63,7 @@ Category
                 </tbody>
                 <tfoot>
                     <tr>
+                      <th></th>
                         <th>Type</th>
                         <th>Category</th>
                         <th>Action</th>

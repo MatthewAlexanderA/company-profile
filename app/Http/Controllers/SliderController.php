@@ -16,10 +16,10 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $slider = Slider::latest()->paginate(5);
+        $slider = Slider::latest()->paginate(500);
 
         return view('admin.slider.index', compact('slider'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -123,5 +123,12 @@ class SliderController extends Controller
 
         return redirect()->route('slider.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedSlider(Request $request)
+    {
+        $ids = $request->ids;
+        Slider::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

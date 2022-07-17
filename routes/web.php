@@ -67,3 +67,10 @@ Route::resource('contact', ContactController::class)->middleware('auth');
 
 Route::resource('config', ConfigController::class)->middleware('auth');
 Route::resource('form', FormController::class)->middleware('auth');
+
+Route::delete('/selected-slider', [SliderController::class, 'deleteCheckedSlider'])->name('slider.deleteSelected');
+Route::delete('/selected-service', [ServiceController::class, 'deleteCheckedService'])->name('service.deleteSelected');
+Route::delete('/selected-gallery', [GalleryController::class, 'deleteCheckedGallery'])->name('gallery.deleteSelected');
+Route::delete('/selected-testimonial', [TestimonialController::class, 'deleteCheckedTestimonial'])->name('testimonial.deleteSelected');
+Route::delete('/selected-blog', [BlogController::class, 'deleteCheckedBlog'])->name('blog.deleteSelected');
+Route::delete('/selected-category', [CategoryController::class, 'deleteCheckedCategory'])->name('category.deleteSelected');

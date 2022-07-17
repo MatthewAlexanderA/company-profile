@@ -16,10 +16,10 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        $testimonial = Testimonial::latest()->paginate(5);
+        $testimonial = Testimonial::latest()->paginate(500);
 
         return view('admin.testimonial.index', compact('testimonial'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -126,5 +126,12 @@ class TestimonialController extends Controller
 
         return redirect()->route('testimonial.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedTestimonial(Request $request)
+    {
+        $ids = $request->ids;
+        Testimonial::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

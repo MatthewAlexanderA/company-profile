@@ -21,7 +21,8 @@ Blog
             <div class="card-header">
               <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('blog.create') }}"> Create</a>
-            </div>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedBlog" onclick="location.reload()">Delete Selected</a>
+              </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -34,6 +35,7 @@ Blog
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>
@@ -44,6 +46,7 @@ Blog
                 <tbody>
                   @foreach ($blog as $b)
                   <tr>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $b->id }}" /></td>
                     <td>{{ $b->title }}</td>
                     <td><?php echo $b->content ?></td>
                     <td>
@@ -68,6 +71,7 @@ Blog
                 </tbody>
                 <tfoot>
                     <tr>
+                      <th></th>
                       <th>Title</th>
                       <th>Content</th>
                       <th>Image</th>

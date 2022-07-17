@@ -21,7 +21,8 @@ Sliders
             <div class="card-header">
               <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('slider.create') }}"> Create</a>
-            </div>
+                <a href="#" class="btn btn-danger" id="deleteAllSelectedSlider" onclick="location.reload()">Delete Selected</a>
+              </div>
             @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
@@ -33,6 +34,7 @@ Sliders
               <table id="example" class="display" style="width:100%">
                 <thead>
                     <tr>
+                      <th><input type="checkbox" id="chkCheckAll" /></th>
                       <th>Image</th>
                       <th>Action</th>
                     </tr>
@@ -40,6 +42,7 @@ Sliders
                 <tbody>
 					@foreach ($slider as $s)
                     <tr>
+                    <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $s->id }}" /></td>
                         <td>
                             <div style="width: 200px;">
                                 <img src="{{ asset('storage/' . $s->image) }}" alt="No Image" class="img-fluid mt-3">
@@ -62,6 +65,7 @@ Sliders
                   </tbody>
                   <tfoot>
                       <tr>
+                        <th></th>
                         <th>Image</th>
                         <th>Action</th>
                       </tr>

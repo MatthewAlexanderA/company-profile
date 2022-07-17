@@ -16,10 +16,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $service = Service::latest()->paginate(5);
+        $service = Service::latest()->paginate(500);
 
         return view('admin.service.index', compact('service'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -124,5 +124,12 @@ class ServiceController extends Controller
 
         return redirect()->route('service.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedService(Request $request)
+    {
+        $ids = $request->ids;
+        Service::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

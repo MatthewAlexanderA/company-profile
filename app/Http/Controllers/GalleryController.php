@@ -17,10 +17,10 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        $gallery = Gallery::latest()->paginate(5);
+        $gallery = Gallery::latest()->paginate(500);
 
         return view('admin.gallery.index', compact('gallery'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
@@ -129,5 +129,12 @@ class GalleryController extends Controller
 
         return redirect()->route('gallery.index')
             ->with('success', 'Delete Success!');
+    }
+
+    public function deleteCheckedGallery(Request $request)
+    {
+        $ids = $request->ids;
+        Gallery::whereIn('id', $ids)->delete();
+        return response()->json(['success' => "Delete Success!"]);
     }
 }

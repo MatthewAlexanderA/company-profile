@@ -273,5 +273,191 @@
     })
   </script>
 
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedSlider").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('slider.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedService").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('service.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedGallery").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('gallery.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedTestimonial").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('testimonial.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedBlog").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('blog.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
+<script>
+  $(function(e){
+    $("#chkCheckAll").click(function(){
+      $(".checkBoxClass").prop('checked',$(this).prop('checked'));
+    });
+
+    $("#deleteAllSelectedCategory").click(function(e){
+      e.preventDefault();
+      var allids = [];
+
+      $("input:checkbox[name=ids]:checked").each(function(){
+        allids.push($(this).val());
+      });
+
+      $.ajax({
+        url:"{{ route('category.deleteSelected') }}",
+        type:"DELETE",
+        data:{
+          _token:$("input[name=_token]").val(),
+          ids:allids
+        },
+        success:function(response){
+          $.each(allids,function(key,val){
+            $("#sid"+val).remove();
+          })
+        }
+      });
+    })
+  });
+</script>
+
 </body>
 </html>
