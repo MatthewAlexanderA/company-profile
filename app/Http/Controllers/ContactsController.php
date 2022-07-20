@@ -26,11 +26,17 @@ class ContactsController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'required',
-            'subject' => 'required',
-            'content' => 'required',
-        ]);
+        $validated = $request->validate(
+            [
+                'name' => 'required',
+                'subject' => 'required',
+                'content' => 'required',
+                'g-recaptcha-response' => 'required|captcha'
+            ],
+            [
+                'g-recaptcha-response.required' => 'Please verify that you are not a robot.'
+            ]
+        );
 
         Form::create($validated);
 

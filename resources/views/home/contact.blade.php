@@ -9,6 +9,16 @@ active
 <div class="content mt-3">
     <br>
     <h3>Contact Us</h3>
+    @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
     @foreach ($contact as $c)
     <div class="input-group mb-3">
         <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
@@ -75,16 +85,6 @@ active
         <form action="{{ route('contacts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="card-body">
-                @if ($errors->any())
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
                     <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Name" value="{{ old('name') }}">
@@ -100,6 +100,12 @@ active
                         <trix-editor input="contents"></trix-editor>
                     </div>
                 </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        {!! NoCaptcha::renderJs('en', false, 'onloadCallback') !!}
+                        {!! NoCaptcha::display() !!}
+                    </div>
+                </div>
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -107,5 +113,11 @@ active
             </form>
         </div>
 </div>
+
+<script type="text/javascript">
+    var onloadCallback = function() {
+      alert("grecaptcha is ready!");
+    };
+  </script>
 
 @endsection
