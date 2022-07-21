@@ -14,9 +14,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="assets/admin/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../assets/admin/plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="assets/admin/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../assets/admin/dist/css/adminlte.min.css">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -163,25 +163,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- REQUIRED SCRIPTS -->
 
 <!-- jQuery -->
-<script src="assets/admin/plugins/jquery/jquery.min.js"></script>
+<script src="../assets/admin/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
-<script src="assets/admin/dist/js/adminlte.min.js"></script>
+<script src="../assets/admin/dist/js/adminlte.min.js"></script>
 
 <!-- DataTables  & Plugins -->
-<script src="assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<script src="assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
-<script src="assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
-<script src="assets/admin/plugins/jszip/jszip.min.js"></script>
-<script src="assets/admin/plugins/pdfmake/pdfmake.min.js"></script>
-<script src="assets/admin/plugins/pdfmake/vfs_fonts.js"></script>
-<script src="assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
-<script src="assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
-<script src="assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script src="../assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/admin/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../assets/admin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../assets/admin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../assets/admin/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../assets/admin/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="../assets/admin/plugins/jszip/jszip.min.js"></script>
+<script src="../assets/admin/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="../assets/admin/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="../assets/admin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="../assets/admin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="../assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <!-- Page specific script -->
 <script>
@@ -212,9 +212,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </script>
 
 <!-- Ekko Lightbox -->
-<script src="assets/admin/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+<script src="../assets/admin/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
 <!-- Filterizr-->
-<script src="assets/admin/plugins/filterizr/jquery.filterizr.min.js"></script>
+<script src="../assets/admin/plugins/filterizr/jquery.filterizr.min.js"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
