@@ -13,6 +13,8 @@ use App\Models\Blog;
 use App\Models\Config;
 use App\Models\Contact;
 
+use App\Models\Visitor;
+
 use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
@@ -28,6 +30,16 @@ class HomeController extends Controller
         $blog = Blog::latest()->limit(3)->get();
         $config = Config::all();
         $contact = Contact::all();
+
+        $ip_now = $_SERVER['REMOTE_ADDR'];
+        $ip_address = Visitor::where('ip_address', $ip_now);
+
+        $validated = [
+            'ip_address' => $ip_now,
+            'visit_date' => date('Y-m-d'),
+        ];
+
+        Visitor::create($validated);
 
         return view('home.index', compact('slider', 'about', 'why', 'service', 'gallery', 'testimonial', 'blog', 'config', 'contact'));
     }

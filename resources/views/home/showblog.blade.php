@@ -14,7 +14,7 @@ active
 
     <a href="/blogs"><button class="btn btn-danger">Back</button></a>
 
-    <h3>{{ $blog->title }}</h2>
+    <h3 style="text-align: center">{{ $blog->title }}</h2>
     <img src="{{ asset('storage/' . $blog->image) }}" class="img-fluid" alt="No Image"><br><br>
 
     <h5><?= $blog->content ?></h5>
