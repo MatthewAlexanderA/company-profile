@@ -20,8 +20,9 @@ class DashboardController extends Controller
         $testimonial = Testimonial::count();
         $blog = Blog::count();
         $slider = Slider::count();
-        $category = Category::count();
+        $category_g = Category::where('type', 'gallery')->count();
+        $category_b = Category::where('type', 'blog')->count();
 
-        return view('admin.dashboard', compact('service', 'gallery', 'testimonial', 'blog', 'slider', 'category'));
+        return view('admin.dashboard', compact('service', 'gallery', 'testimonial', 'blog', 'slider', 'category_g', 'category_b'));
     }
 }

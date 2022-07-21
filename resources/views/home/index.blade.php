@@ -90,10 +90,11 @@ active
 <div class="content mt-3">
     <br>
     <h3>Testimonial</h3>
-  <div class="row g-2">
-    @foreach ($testimonial as $t)
-    <div class="col-md-6">
-        <div class="card" style="">
+    <div id="carouselExampleTitle" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        @foreach ($testimonial as $t)
+        <div class="carousel-item active">
+          <div class="card" style="">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="{{ asset('storage/' . $t->image) }}" class="img-fluid rounded-start" alt="No Image">
@@ -107,9 +108,18 @@ active
                 </div>
             </div>
         </div>
+        </div>
+        @endforeach
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleTitle" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleTitle" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    @endforeach
-  </div>
 </div>
 
 <div class="content mt-3">
@@ -122,30 +132,6 @@ active
     </section>
 </div>
 
-{{-- <div class="content mt-3">
-    <div id="map" style="height: 400px;"></div>
-
-<script type="text/javascript">
-    function initMap() {
-      const myLatLng = { lat: 22.2734719, lng: 70.7512559 };
-      const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 5,
-        center: myLatLng,
-      });
-      new google.maps.Marker({
-        position: myLatLng,
-        map,
-        title: "Hello!",
-      });
-    }
-    window.initMap = initMap;
-</script>
-
-<script type="text/javascript"
-    src="https://maps.google.com/maps/api/js?key={{ env('GOOGLE_MAP_KEY') }}&callback=initMap" ></script>
-
-</div> --}}
-
 <div class="content mt-3">
     <br>
     <h3>Blog</h3>
@@ -156,8 +142,8 @@ active
         <div class="card" style="width: 18rem;">
             <img src="{{ asset('storage/' . $b->image) }}" class="card-img-top" alt="No Image">
             <div class="card-body">
-            <h5 class="card-text" style="text-align: center">{{ $b->title }}</h5>
-            <p class="card-text"><?php echo $b->content ?></p>
+            <p class="card-text mt-0 mb-0">{{ $b->category }}</p>
+            <h5 class="card-text pb-3 mt-0" style="text-align: center">{{ $b->title }}</h5>
             </div>
         </div>
       </a>

@@ -23,8 +23,8 @@ class HomeController extends Controller
         $about = About::all();
         $why = Why::all();
         $service = Service::limit(6)->get();
-        $gallery = Gallery::limit(4)->get();
-        $testimonial = Testimonial::limit(2)->get();
+        $gallery = Gallery::latest()->limit(4)->get();
+        $testimonial = Testimonial::all();
         $blog = Blog::latest()->limit(3)->get();
         $config = Config::all();
         $contact = Contact::all();

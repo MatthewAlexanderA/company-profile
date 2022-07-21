@@ -118,9 +118,23 @@ Dashboard
     <div class="col-lg-3 col-6">
         <div class="small-box bg-navy">
             <div class="inner">
-                <h3>{{ $category }}</h3>
+                <h3>{{ $category_g }}</h3>
 
-                <p>Total Category</p>
+                <p>Total Category (Gallery)</p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-quote-left"></i>
+            </div>
+            <div class="small-box-footer"> </div>
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-purple">
+            <div class="inner">
+                <h3>{{ $category_b }}</h3>
+
+                <p>Total Category (Blog)</p>
             </div>
             <div class="icon">
                 <i class="fa-solid fa-quote-left"></i>

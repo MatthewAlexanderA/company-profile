@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Config;
 use App\Models\Contact;
+use App\Models\Category;
 
 use Illuminate\Http\Request;
 
@@ -15,8 +16,16 @@ class BlogsController extends Controller
         $blog = Blog::orderBy('created_at', 'DESC')->get();
         $config = Config::all();
         $contact = Contact::all();
+        $category = Category::where('type', 'blog')->get();
 
-        return view('home.blog', compact('blog', 'config', 'contact'));
+        if (request()->filter) {
+            $filter = request()->filter;
+            $blog = Blog::where('category', '=', "{$filter}")->orderBy('created_at', 'desc')->get();
+        } else {
+            $data = Blog::latest()->get();
+        }
+
+        return view('home.blog', compact('blog', 'config', 'contact', 'category'));
     }
 
     /**
