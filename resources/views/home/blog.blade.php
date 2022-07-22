@@ -35,7 +35,7 @@ active
             <img src="{{ asset('storage/' . $b->image) }}" class="card-img-top" alt="No Image">
             <div class="card-body">
               <p class="card-text mt-0 mb-0">{{ $b->category }}</p>
-              <h5 class="card-text pb-3 mt-0" style="text-align: center">{{ $b->title }}</h5>
+              <h5 class="card-text pb-3 mt-2" style="text-align: center">{{ $b->title }}</h5>
             </div>
         </div>
       </a>

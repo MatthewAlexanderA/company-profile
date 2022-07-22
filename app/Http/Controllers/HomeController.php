@@ -32,7 +32,7 @@ class HomeController extends Controller
         $contact = Contact::all();
 
         $ip_now = $_SERVER['REMOTE_ADDR'];
-        $ip_address = Visitor::where('ip_address', $ip_now);
+        // $ip_address = Visitor::where('ip_address', $ip_now);
 
         $validated = [
             'ip_address' => $ip_now,

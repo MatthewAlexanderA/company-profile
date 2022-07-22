@@ -37,7 +37,7 @@ Blog
                     <tr>
                       <th><input type="checkbox" id="chkCheckAll" /></th>
                       <th>Title</th>
-                      <th>Content</th>
+                      {{-- <th>Content</th> --}}
                       <th>Image</th>
                       <th>Category</th>
                       <th>Action</th>
@@ -48,7 +48,7 @@ Blog
                   <tr>
                     <td><input type="checkbox" name="ids" class="checkBoxClass" value="{{ $b->id }}" /></td>
                     <td>{{ $b->title }}</td>
-                    <td><?php echo $b->content ?></td>
+                    {{-- <td> substr($b->content, 0, 150) </td> --}}
                     <td>
                         <div style="width: 200px;">
                             <img src="{{ asset('storage/' . $b->image) }}" alt="No Image" class="img-fluid mt-3">
@@ -73,7 +73,7 @@ Blog
                     <tr>
                       <th></th>
                       <th>Title</th>
-                      <th>Content</th>
+                      {{-- <th>Content</th> --}}
                       <th>Image</th>
                       <th>Category</th>
                       <th>Action</th>
