@@ -18,11 +18,11 @@ Forms
             <div class="card-header">
               <div class="pull-right">
             </div>
-            @if ($message = Session::get('success'))
+            {{-- @if ($message = Session::get('success'))
                 <div class="alert alert-success">
                     <p>{{ $message }}</p>
                 </div>
-            @endif
+            @endif --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">

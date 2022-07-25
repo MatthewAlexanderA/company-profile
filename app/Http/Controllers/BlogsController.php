@@ -11,12 +11,18 @@ use Illuminate\Http\Request;
 
 class BlogsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $blog = Blog::orderBy('created_at', 'DESC')->get();
         $config = Config::all();
         $contact = Contact::all();
         $category = Category::where('type', 'blog')->get();
+
+        $blog = Blog::when($request->search, function ($query) use ($request) {
+            $query->where('title', 'like', "%{$request->search}%");;
+        })->orderBy('created_at', 'desc')->paginate(500);
+
+        $blog->appends($request->only('search'));
 
         if (request()->filter) {
             $filter = request()->filter;

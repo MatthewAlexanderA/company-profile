@@ -18,20 +18,10 @@ class BlogController extends Controller
     public function index()
     {
         $blog = Blog::latest()->paginate(500);
-
-        return view('admin.blog.index', compact('blog'))
-            ->with('i', (request()->input('page', 1) - 1) * 500);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
         $category = Category::all();
-        return view('admin.blog.create', compact('category', $category));
+
+        return view('admin.blog.index', compact('blog', 'category'))
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**

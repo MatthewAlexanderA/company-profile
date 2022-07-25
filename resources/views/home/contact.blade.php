@@ -96,8 +96,7 @@ active
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Description</strong>
-                        <input id="contents" type="hidden" name="content" class="form-control" value="{{ old('content') }}">
-                        <trix-editor input="contents"></trix-editor>
+                        <textarea id="contents" type="text" name="content" class="form-control" value="{{ old('content') }}" placeholder="Description" style="height: 200px;"></textarea>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12">

@@ -9,10 +9,7 @@ active
 <div class="content">
     <br>
     <div class="row">
-      <div class="col-md-4">
         <h3>Blog</h3>
-      </div>
-      <div class="col-md-4"></div>
       <div class="col-md-4">
         <form action="{{ url()->current() }}" method="get">
             <div class="input-group mb-3">
@@ -24,6 +21,15 @@ active
                   @endforeach
                 </select>
             </div>
+        </form>
+      </div>
+      <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <form action="{{ url()->current() }}" autocomplete="off" method="get">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search" name="search">
+                            <button class="btn btn-dark" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
         </form>
       </div>
     </div>
@@ -41,6 +47,10 @@ active
       </a>
     </div>
     @endforeach
+    @forelse ($blog as $b)
+    @empty
+        <p class="text-center mb-5">No Record Found</p>
+    @endforelse
   </div>
 </div>
 

@@ -18,20 +18,10 @@ class GalleryController extends Controller
     public function index()
     {
         $gallery = Gallery::latest()->paginate(500);
-
-        return view('admin.gallery.index', compact('gallery'))
-            ->with('i', (request()->input('page', 1) - 1) * 500);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
         $category = Category::all();
-        return view('admin.gallery.create', compact('category', $category));
+
+        return view('admin.gallery.index', compact('gallery', 'category'))
+            ->with('i', (request()->input('page', 1) - 1) * 500);
     }
 
     /**
